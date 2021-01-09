@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Chain blockchain = new Chain();
         Block newBlock;
-        
+        String jsonResponse;
+
         newBlock = Handler.mine(blockchain,
                                 new String[]{"Walk around with dog",
                                                 "Feed the cats"});
@@ -18,6 +19,13 @@ public class Main {
                                                 "Create a reminder for soma meetings"});
         blockchain.addBlock(newBlock);
         
-        System.out.println("\nBlockchain in JSON format: " + blockchain.toJSONString());
+        jsonResponse = blockchain.toJSONString()
+                        .replace("[{", "[\n\t{\n\t\t")
+                        .replace("}]", "}\n]")
+                        .replace(",{", ",\n\t{\n\t\t")
+                        .replace("}", "\n\t}")
+                        .replace(",\"", ",\n\t\t\"");
+
+        System.out.println("\nBlockchain in JSON format: \n" + jsonResponse);
     }
 }
