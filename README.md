@@ -1,2 +1,2 @@
-# blockchain4j_
-Test environment to blockchain4j project
+# blockchain4j
+:link: Test environment to blockchain4j project
